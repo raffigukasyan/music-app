@@ -1,5 +1,7 @@
-export default function Main() {
-    return <div>
-        Home
-    </div>
+export const Main = () => {
+       return (
+           <div>
+               Home
+           </div>
+       )
 }
