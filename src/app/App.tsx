@@ -1,6 +1,8 @@
 import "./styles/main.css";
+import Providers from "@/app/providers/Providers.tsx";
+import AppRouter from "@/app/routes/AppRouter.tsx";
 export default function App() {
-    return <div className={'text-red-500'}>
-        sadada
-    </div>
+    return <Providers>
+        <AppRouter />
+    </Providers>
 }
