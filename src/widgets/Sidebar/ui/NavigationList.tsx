@@ -11,7 +11,7 @@ interface NavigationListProps {
 export const NavigationList:FC<NavigationListProps> = ({routes, title, isOpen}):JSX.Element => {
         return (
             <div className={'flex flex-col gap-y-2'}>
-                <p className={'pl-4 text-xl text-myWhite'}>{title}</p>
+                {/*{isOpen ?? <p className={'pl-4 text-xl text-myWhite'}>{title}</p>}*/}
                 {routes.map((route: INavigationMenu) => (
                     <NavLink key={route.link} to={route.link}>
                         {({isActive}) => (
