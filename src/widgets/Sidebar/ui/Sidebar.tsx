@@ -7,8 +7,12 @@ import {NavigationItem} from "@/widgets/Sidebar/ui/NavigationItem.tsx";
 import {motion, Variants} from "framer-motion";
 import {createContext, useState} from "react";
 
+export interface ISidebarContext {
+    variantsElement: Variants,
+    variantsItem: Variants
+}
 
-export const SidebarContext = createContext<Variants | undefined>(undefined);
+export const SidebarContext = createContext<ISidebarContext | undefined>(undefined);
 export const Sidebar = ():JSX.Element => {
     const [isOpen, setIsOpen] = useState<boolean>(true);
     const variantsElement:Variants = {
@@ -39,7 +43,7 @@ export const Sidebar = ():JSX.Element => {
                 </nav>
                 <OpenButton variants={variantsItem}  onClick={() => setIsOpen(!isOpen)}>
                     <ArrowLeftIcon className={'max-w-6 max-h-6 text-myWhite'}/>
-                    <motion.span transition={{duration: 0.4, ease: "easeInOut"}} variants={variantsElement}>Свернуть
+                    <motion.span transition={{duration: 0.2, ease: "easeInOut"}} variants={variantsElement}>Свернуть
                     </motion.span>
                 </OpenButton>
                 <NavigationItem  route={{
