@@ -1,9 +1,9 @@
-import {EventHandler, FC} from "react";
+import {FC} from "react";
 import {motion, Variants} from "framer-motion";
 interface OpenButtonProps {
     className?: string;
     children?: React.ReactNode;
-    onClick?: EventHandler<HTMLButtonElement>,
+    onClick?:  (e: React.MouseEvent<HTMLButtonElement>) => void,
     variants: Variants
 }
 

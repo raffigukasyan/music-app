@@ -1,4 +1,4 @@
-import {Logo} from "./Logo.tsx";
+
 import {NavigationList} from "@/widgets/Sidebar/ui/NavigationList.tsx";
 import {AUTH_NAVIGATION_MENU, NAVIGATION_MENU} from "@/shared/consts/navMenu.ts";
 import {OpenButton} from "@/widgets/Sidebar/ui/OpenButton.tsx";
