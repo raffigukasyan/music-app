@@ -1,7 +1,9 @@
+import {BannerSlider} from "@/widgets/BannerSlider";
+
 export const Main = () => {
        return (
-           <div>
-               Home
-           </div>
+           <section className={'w-full'}>
+               <BannerSlider />
+           </section>
        )
 }
