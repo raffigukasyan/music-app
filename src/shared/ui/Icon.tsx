@@ -12,7 +12,7 @@ import {
     ArrowLeftIcon,
     ArrowRightIcon,
     ArrowRightEndOnRectangleIcon,
-    ChevronRightIcon, MagnifyingGlassIcon
+    ChevronRightIcon, MagnifyingGlassIcon, Squares2X2Icon, CogIcon, BellIcon
 } from "@heroicons/react/24/outline";
 
 
@@ -37,6 +37,9 @@ export const Icon:FC<IconProps> = ({type, className}) => {
         'arrowRight': <ArrowRightIcon className={className} />,
         'chevron-right': <ChevronRightIcon className={className}/>,
         'search': <MagnifyingGlassIcon className={className} />,
-        'logout': <ArrowRightEndOnRectangleIcon className={className}/>
+        'logout': <ArrowRightEndOnRectangleIcon className={className}/>,
+        'squares': <Squares2X2Icon className={className} />,
+        'settings': <CogIcon className={className} />,
+        'notificat': <BellIcon className={className} />
     }[type]
 }

@@ -6,7 +6,7 @@ const Layout = ():JSX.Element => {
     return (
         <div className={'w-full font-roboto flex gap-x-3 h-dvh bg-myBlack p-3'}>
             <Sidebar />
-            <div>
+            <div className={'w-full'}>
                 <Header />
                 <main>
                     <Outlet/>

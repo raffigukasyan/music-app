@@ -1,11 +1,12 @@
 interface IInputProps  {
-    value: string,
-    className: string,
-    onChange: React.ChangeEventHandler<HTMLInputElement>,
+    value?: string,
+    className?: string,
+    placeholder: string
+    onChange?: React.ChangeEventHandler<HTMLInputElement>,
 }
 
-export const Input = ({value, className, onChange}:IInputProps):JSX.Element => {
+export const Input = ({value, placeholder,  className, onChange}:IInputProps):JSX.Element => {
     return (
-        <input className={className} type="text" value={value} onChange={onChange} />
+        <input type={'text'} placeholder={placeholder} className={`border-none bg-transparent placeholder:border-none focus:outline-0 text-lg text-gray-300  ${className}`} value={value ?? ''} onChange={onChange} />
     )
 }
