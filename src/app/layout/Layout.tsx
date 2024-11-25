@@ -4,15 +4,19 @@ import {Header} from "@/widgets/Header/index.ts";
 
 const Layout = ():JSX.Element => {
     return (
-        <div className={'w-full font-roboto flex gap-x-3 h-[100vh] bg-myBlack p-3'}>
+        <div className={'flex gap-x-3 h-screen bg-myBlack p-3'}>
             <Sidebar />
-            <div className={'h-full w-full'}>
+            <main className={'flex-1'}>
                 <Header />
-                <main className={'flex mt-4 w-full h-full  gap-x-3'}>
-                    <Outlet />
-                    <aside className={'flex rounded-3xl w-full h-full bg-myBlack-200'}></aside>
-                </main>
-            </div>
+                <div className={'flex w-full mt-4 h-full gap-x-3'}>
+                        <div className={'w-0 flex-1'}>
+                            <Outlet/>
+                        </div>
+                        <div className={'w-[20%] rounded-3xl h-full bg-myBlack-200'}>
+                            hfghfg
+                        </div>
+                </div>
+            </main>
         </div>
     )
 }
