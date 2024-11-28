@@ -7,8 +7,8 @@ interface IPreviewImage {
 
 export const PreviewImage:FC<IPreviewImage> = ({src, className}):JSX.Element => {
     return (
-        <div className={`mxa-w-20 max-h-20  ${className}`}>
-            <img src={src} className={'object-cover w-full h-auto'} alt=""/>
+        <div className={`max-w-20 max-h-20  ${className}`}>
+            <img src={src} className={'rounded-2xl object-cover w-full h-auto'} alt=""/>
         </div>
     )
 }
