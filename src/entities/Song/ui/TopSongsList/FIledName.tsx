@@ -1,5 +1,5 @@
-export const FiledName = ({name}:{name: string}) => {
+export const FiledName = ({className, name}:{name: string, className: string}) => {
     return (
-        <p className={'text-xl text-myWhite'}>{name}</p>
+        <p className={`text-base text-myWhite ${className}`}>{name}</p>
     )
 }

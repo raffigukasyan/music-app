@@ -12,7 +12,7 @@ import {
     ArrowLeftIcon,
     ArrowRightIcon,
     ArrowRightEndOnRectangleIcon,
-    ChevronRightIcon, MagnifyingGlassIcon, Squares2X2Icon, CogIcon, BellIcon
+    ChevronRightIcon, MagnifyingGlassIcon, Squares2X2Icon, CogIcon, BellIcon, ChevronDownIcon, ChevronUpIcon
 } from "@heroicons/react/24/outline";
 
 
@@ -35,6 +35,8 @@ export const Icon:FC<IconProps> = ({type, className}) => {
         'podcast': <MicrophoneIcon className={className}/>,
         'arrowLeft': <ArrowLeftIcon className={className} />,
         'arrowRight': <ArrowRightIcon className={className} />,
+        'chevron-down': <ChevronDownIcon className={className} />,
+        'chevron-up': <ChevronUpIcon className={className} />,
         'chevron-right': <ChevronRightIcon className={className}/>,
         'search': <MagnifyingGlassIcon className={className} />,
         'logout': <ArrowRightEndOnRectangleIcon className={className}/>,

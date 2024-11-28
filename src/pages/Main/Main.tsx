@@ -1,11 +1,11 @@
 import {BannerSlider} from "@/widgets/BannerSlider";
-import {TopSongs} from "@/pages/Main/ui/TopSongs/TopSongs.tsx";
+import {PopularSongs} from "@/pages/Main/ui/PopularSongs/PopularSongs.tsx";
 
 export const Main = () => {
        return (
            <section className={'max-w-full'}>
                <BannerSlider />
-               <TopSongs />
+               <PopularSongs />
            </section>
        )
 }
