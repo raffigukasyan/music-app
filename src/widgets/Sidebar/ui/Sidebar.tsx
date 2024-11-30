@@ -33,7 +33,7 @@ export const Sidebar = ():JSX.Element => {
     return (
         <SidebarContext.Provider value={{variantsElement, variantsItem}}>
             <motion.div animate={isOpen ? 'visibility' : 'hidden'}
-                        className={'flex flex-col justify-between gap-y-7 h-full bg-[#22252B] py-8 px-4 rounded-2xl'}>
+                        className={'[grid-row:_span_3]  flex flex-col justify-between gap-y-7 h-full bg-[#22252B] py-8 px-4 rounded-2xl'}>
                 {/*<motion.div>*/}
                 {/*    <Logo isOpen={isOpen} />*/}
                 {/*</motion.div>*/}
