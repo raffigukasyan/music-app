@@ -8,3 +8,13 @@
 html, body, #root {
     height: 100%;
 }
+
+@layer components {
+    .hide-scroll {
+        scrollbar-width: none; /* Убирает скроллбар в Firefox */
+        -ms-overflow-style: none;
+    }
+    .hide-scroll::-webkit-scrollbar {
+        display: none; /* Убирает скроллбар в Chrome, Safari */
+    }
+}
