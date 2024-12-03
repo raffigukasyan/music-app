@@ -4,6 +4,7 @@ import {Header} from "@/widgets/Header/index.ts";
 import {Player} from "@/widgets/Player";
 import {motion, useScroll, useSpring} from "framer-motion"
 import {useRef} from "react";
+import {SelectedPlaylist} from "@/widgets/SelectPlaylist";
 
 const Layout = (): JSX.Element => {
     const mainRef = useRef<HTMLDivElement>(null);
@@ -20,12 +21,16 @@ const Layout = (): JSX.Element => {
             <Sidebar/>
             <Header/>
             <div ref={mainRef}
-                 className={'[grid-column:_span_1] overflow-x-hidden overflow-y-scroll hide-scroll'}>
+                 className={'rounded-2xl [grid-column:_span_1] overflow-x-hidden overflow-y-scroll hide-scroll'}>
                 <Outlet/>
             </div>
-            <div className={'[grid-column:_span_2] rounded-3xl bg-myBlack-200'}>
-                PLAYLIST
-            </div>
+            <SelectedPlaylist playlist={{
+                name: 'Top Avg',
+                preview: 'https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/af/73/5a/af735a4b-f374-7a1b-61c3-eaac06abbccd/cover.jpg/600x600bf-60.jpg',
+                likes: 3232,
+                songCount: 23,
+                description: 'Top artisit in 2024 year'
+            }} />
             <Player/>
         </main>
     )

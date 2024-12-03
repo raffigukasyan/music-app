@@ -5,7 +5,7 @@ import {PopularList} from "@/pages/Main/ui/PopularSongs/PopularList.tsx";
 export const PopularSongs = ():JSX.Element => {
     return (
         <section className={'mb-20'}>
-            <SectionHead className={'mb-10'} head={'Популярное'} />
+            <SectionHead className={'mb-5'} head={'Популярное'} />
             <Filter />
             <PopularList />
         </section>
