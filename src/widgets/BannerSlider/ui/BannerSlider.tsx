@@ -2,7 +2,6 @@
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Banner} from "@/entities/Banner";
 // @ts-ignore
-import 'swiper/css';
 import {Autoplay} from "swiper/modules";
 export const BannerSlider = ():JSX.Element => {
     return (

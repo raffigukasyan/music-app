@@ -1,4 +1,4 @@
-import {MusicIcon} from "@/shared/ui/Icons/Icons.tsx";
+import {MusicIcon, NextMusic, PrevMusic} from "@/shared/ui/Icons/Icons.tsx";
 import {FC} from "react";
 import {
     BuildingLibraryIcon,
@@ -12,7 +12,7 @@ import {
     ArrowLeftIcon,
     ArrowRightIcon,
     ArrowRightEndOnRectangleIcon,
-    ChevronRightIcon, MagnifyingGlassIcon, Squares2X2Icon, CogIcon, BellIcon, ChevronDownIcon, ChevronUpIcon
+    ChevronRightIcon, MagnifyingGlassIcon, Squares2X2Icon, CogIcon, BellIcon, ChevronDownIcon, ChevronUpIcon, PauseIcon
 } from "@heroicons/react/24/outline";
 
 
@@ -42,6 +42,9 @@ export const Icon:FC<IconProps> = ({type, className}) => {
         'logout': <ArrowRightEndOnRectangleIcon className={className}/>,
         'squares': <Squares2X2Icon className={className} />,
         'settings': <CogIcon className={className} />,
-        'notificat': <BellIcon className={className} />
+        'notificat': <BellIcon className={className} />,
+        'next': <NextMusic className={className}/>,
+        'prev': <PrevMusic className={className}/>,
+        'pause': <PauseIcon className={className} />
     }[type]
 }

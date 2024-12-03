@@ -1,5 +1,5 @@
 import {FC} from "react";
-import {PreviewImage} from "@/entities/Song/ui/PreviewImage.tsx";
+import {PreviewImage} from "@/shared/ui/PreviewImage.tsx";
 import {FiledName} from "@/entities/Song/ui/TopSongsList/FIledName.tsx";
 
 interface ISongNameProps {
