@@ -10,7 +10,6 @@ interface ISelectedPlaylistProps {
     songCount: number,
     tracks?: ITracks[]
 }
-
 interface ITracks {
     name: string;
     artist: string;

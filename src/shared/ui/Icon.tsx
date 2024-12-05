@@ -12,7 +12,15 @@ import {
     ArrowLeftIcon,
     ArrowRightIcon,
     ArrowRightEndOnRectangleIcon,
-    ChevronRightIcon, MagnifyingGlassIcon, Squares2X2Icon, CogIcon, BellIcon, ChevronDownIcon, ChevronUpIcon, PauseIcon
+    ChevronRightIcon,
+    MagnifyingGlassIcon,
+    Squares2X2Icon,
+    CogIcon,
+    BellIcon,
+    ChevronDownIcon,
+    ChevronUpIcon,
+    PauseIcon,
+    PlayIcon
 } from "@heroicons/react/24/outline";
 
 
@@ -45,6 +53,7 @@ export const Icon:FC<IconProps> = ({type, className}) => {
         'notificat': <BellIcon className={className} />,
         'next': <NextMusic className={className}/>,
         'prev': <PrevMusic className={className}/>,
-        'pause': <PauseIcon className={className} />
+        'pause': <PauseIcon className={className} />,
+        'play': <PlayIcon className={className} />
     }[type]
 }
