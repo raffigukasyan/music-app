@@ -3,12 +3,13 @@ import {motion} from "framer-motion";
 import {useDispatch, useSelector} from "react-redux";
 import {playerSelector} from "@/entities/Player";
 import {setTimeProgress} from "@/entities/Player/model/PlayerSlice.tsx";
-export const ProgressBar = ({progressRef, playerRef}:{progressRef: RefObject<HTMLDivElement>, playerRef:RefObject<HTMLAudioElement>}):JSX.Element => {
+export const ProgressBar = ({progressRef, playerRef, playAnimationRef}:{progressRef: RefObject<HTMLDivElement>, playerRef:RefObject<HTMLAudioElement>, playAnimationRef:any}):JSX.Element => {
     const [isProcces, setIsProcces] = useState<boolean>();
     const [cordinate, setCordinate] = useState<number>(0);
     const [width, setWidth] = useState<number>(0);
     const progressBarRef = useRef<HTMLDivElement>(null);
     const dispath = useDispatch();
+    const {duration} = useSelector(playerSelector);
     const getToProcent = (wParent:number, wElement:number):number => {
         return Math.floor((wElement / wParent) * 100);
     }
@@ -23,11 +24,21 @@ export const ProgressBar = ({progressRef, playerRef}:{progressRef: RefObject<HTM
         return draggableWidth
     }
     useEffect(() => {
-        const listener = () => {
+        const listener = (eve) => {
             setIsProcces(false);
+            // if(eve.target === progressBarRef.current) {
+            //     console.log('CCCC');
+            //     playerRef.current.currentTime = 40;
+            //     playerRef.current.play();
+            //     dispath(setTimeProgress(40))
+            // }
+            // playerRef.current.currentTime = 30;
+            // playerRef.current.play();
+            // dispath(setTimeProgress(120))
         }
 
         document.body.addEventListener('pointerup', listener);
+        document.body.addEventListener('point', () => {console.log('POPOPOPOPO')})
         return () => document.removeEventListener('pointerup', listener)
     }, []);
 
@@ -38,9 +49,12 @@ export const ProgressBar = ({progressRef, playerRef}:{progressRef: RefObject<HTM
             console.log('sss')
             if(progressBarRef.current && progressRef.current) {
                 playerRef.current.pause();
-                dispath(setTimeProgress(120))
-                const translate:number =  width + (eve.clientX - cordinate)
+                cancelAnimationFrame(playAnimationRef.current);
+                // dispath(setTimeProgress(120))
+                const translate:number =  width + (eve.clientX - cordinate);
+                const procent:number = getToProcent(progressBarRef.current?.clientWidth as number, applyConstraints(progressBarRef.current?.clientWidth as number, translate));
                 progressRef.current.style.width = getToProcent(progressBarRef.current?.clientWidth as number, applyConstraints(progressBarRef.current?.clientWidth as number, translate)) + '%';
+                dispath(setTimeProgress((duration / 100) * procent))
             }
         }
         if(isProcces) {
@@ -52,7 +66,7 @@ export const ProgressBar = ({progressRef, playerRef}:{progressRef: RefObject<HTM
     }, [isProcces]);
 
     return (
-        <div ref={progressBarRef} onMouseDown={(event) => {
+        <div ref={progressBarRef}  onMouseDown={(event) => {
             console.log('CLICK');
             setIsProcces(true);
             setCordinate(event.clientX)

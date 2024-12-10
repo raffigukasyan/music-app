@@ -10,13 +10,13 @@ export const Player = ():JSX.Element => {
     const player:IPlayer = useSelector(playerSelector);
     const playerRef = useRef<HTMLAudioElement>(null);
     const progressRef = useRef<HTMLDivElement>(null)
-
+    const playAnimationRef = useRef<number | undefined>(null);
     return (
             <BlockContainer className={'[grid-column:_span_3/5] flex items-center justify-between gap-x-2  px-4 py-4 w-full'}>
                 <PlayerName />
                 <div className={'flex-1 flex flex-col gap-y-3 items-center justify-center'}>
-                    <PlayerControl progressRef={progressRef} playerRef={playerRef} src={player.activePlayer.track} />
-                    <PlayerProgressBar playerRef={playerRef} progressRef={progressRef} />
+                    <PlayerControl playAnimationRef={playAnimationRef} progressRef={progressRef} playerRef={playerRef} src={player.activePlayer.track} />
+                    <PlayerProgressBar playAnimationRef={playAnimationRef}  playerRef={playerRef} progressRef={progressRef} />
                 </div>
             </BlockContainer>
     )

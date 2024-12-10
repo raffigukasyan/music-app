@@ -8,12 +8,12 @@ import {setDuration, setTimeProgress} from "@/entities/Player/model/PlayerSlice.
 interface IPlayerControlProps {
     src: string,
     playerRef: RefObject<HTMLAudioElement>,
-    progressRef: RefObject<HTMLDivElement>
+    progressRef: RefObject<HTMLDivElement>,
+    playAnimationRef: RefObject<number | undefined>;
 }
-export const PlayerControl:FC<IPlayerControlProps> = ({playerRef, progressRef, src}):JSX.Element => {
+export const PlayerControl:FC<IPlayerControlProps> = ({playerRef, progressRef, src, playAnimationRef}):JSX.Element => {
     const [isPlaying, setIsPlaying] = useState<boolean>(false);
-    const {duration}: {duration: number} = useSelector(playerSelector)
-    const playAnimationRef = useRef<number | undefined>(null);
+    const {timeProgress, duration}: {duration: number} = useSelector(playerSelector)
     const dispatch = useDispatch();
 
     console.log('RENDERRR');
