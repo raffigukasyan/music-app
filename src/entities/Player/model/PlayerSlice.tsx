@@ -16,7 +16,7 @@ const playerSlice = createSlice({
     name: 'player',
     initialState,
     reducers: {
-        setTimerProgress: (state, action: PayloadAction<number>) => {
+        setTimeProgress: (state, action: PayloadAction<number>) => {
             state.timeProgress = action.payload;
         },
         setDuration: (state, action: PayloadAction<number>) => {
@@ -26,5 +26,5 @@ const playerSlice = createSlice({
 })
 
 export const playerReducer = playerSlice.reducer
-export const {setTimerProgress, setDuration} = playerSlice.actions;
+export const {setTimeProgress, setDuration} = playerSlice.actions;
 export const playerSelector = (state) => state.player

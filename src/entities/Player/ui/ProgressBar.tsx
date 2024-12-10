@@ -1,12 +1,14 @@
-import {useEffect, useRef, useState} from "react";
+import {RefObject, useEffect, useRef, useState} from "react";
 import {motion} from "framer-motion";
-export const ProgressBar = ():JSX.Element => {
+import {useDispatch, useSelector} from "react-redux";
+import {playerSelector} from "@/entities/Player";
+import {setTimeProgress} from "@/entities/Player/model/PlayerSlice.tsx";
+export const ProgressBar = ({progressRef, playerRef}:{progressRef: RefObject<HTMLDivElement>, playerRef:RefObject<HTMLAudioElement>}):JSX.Element => {
     const [isProcces, setIsProcces] = useState<boolean>();
     const [cordinate, setCordinate] = useState<number>(0);
     const [width, setWidth] = useState<number>(0);
     const progressBarRef = useRef<HTMLDivElement>(null);
-    const progressRef = useRef<HTMLDivElement>(null);
-
+    const dispath = useDispatch();
     const getToProcent = (wParent:number, wElement:number):number => {
         return Math.floor((wElement / wParent) * 100);
     }
@@ -32,7 +34,11 @@ export const ProgressBar = ():JSX.Element => {
     useEffect(() => {
 
         const pointerListener = (eve:PointerEvent) => {
+            eve.stopPropagation();
+            console.log('sss')
             if(progressBarRef.current && progressRef.current) {
+                playerRef.current.pause();
+                dispath(setTimeProgress(120))
                 const translate:number =  width + (eve.clientX - cordinate)
                 progressRef.current.style.width = getToProcent(progressBarRef.current?.clientWidth as number, applyConstraints(progressBarRef.current?.clientWidth as number, translate)) + '%';
             }
@@ -47,6 +53,7 @@ export const ProgressBar = ():JSX.Element => {
 
     return (
         <div ref={progressBarRef} onMouseDown={(event) => {
+            console.log('CLICK');
             setIsProcces(true);
             setCordinate(event.clientX)
             setWidth(event.nativeEvent.offsetX)
