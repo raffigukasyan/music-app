@@ -9,7 +9,7 @@ export const ProgressBar = ({progressRef, playerRef, playAnimationRef}:{progress
     const [width, setWidth] = useState<number>(0);
     const progressBarRef = useRef<HTMLDivElement>(null);
     const dispath = useDispatch();
-    const {duration} = useSelector(playerSelector);
+    const {timeProgress, duration} = useSelector(playerSelector);
     const getToProcent = (wParent:number, wElement:number):number => {
         return Math.floor((wElement / wParent) * 100);
     }
@@ -24,7 +24,14 @@ export const ProgressBar = ({progressRef, playerRef, playAnimationRef}:{progress
         return draggableWidth
     }
     useEffect(() => {
+        if(isProcces === undefined) return
         const listener = (eve) => {
+                if(isProcces) {
+                    console.log(timeProgress);
+                    playerRef.current.currentTime = timeProgress;
+                    playerRef.current.play();
+                }
+                // dispath(setTimeProgress(40))
             setIsProcces(false);
             // if(eve.target === progressBarRef.current) {
             //     console.log('CCCC');
@@ -38,9 +45,9 @@ export const ProgressBar = ({progressRef, playerRef, playAnimationRef}:{progress
         }
 
         document.body.addEventListener('pointerup', listener);
-        document.body.addEventListener('point', () => {console.log('POPOPOPOPO')})
+        document.body.addEventListener('pointerdown', () => {console.log('POPOPOPOPO')})
         return () => document.removeEventListener('pointerup', listener)
-    }, []);
+    }, [isProcces]);
 
     useEffect(() => {
 
