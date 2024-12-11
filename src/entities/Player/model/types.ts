@@ -8,5 +8,6 @@ export interface IPlayerActive {
 export interface IPlayer {
     activePlayer: IPlayerActive,
     duration: number,
-    timeProgress: number
+    timeProgress: number,
+    isPlaying: boolean
 }

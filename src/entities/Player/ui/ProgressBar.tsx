@@ -1,15 +1,16 @@
-import {RefObject, useEffect, useRef, useState} from "react";
+import {PointerEvent, PointerEventHandler, RefObject, useEffect, useRef, useState} from "react";
 import {motion} from "framer-motion";
 import {useDispatch, useSelector} from "react-redux";
 import {playerSelector} from "@/entities/Player";
-import {setTimeProgress} from "@/entities/Player/model/PlayerSlice.tsx";
+import {setIsPlaying, setTimeProgress} from "@/entities/Player/model/PlayerSlice.tsx";
 export const ProgressBar = ({progressRef, playerRef, playAnimationRef}:{progressRef: RefObject<HTMLDivElement>, playerRef:RefObject<HTMLAudioElement>, playAnimationRef:any}):JSX.Element => {
     const [isProcces, setIsProcces] = useState<boolean>();
     const [cordinate, setCordinate] = useState<number>(0);
     const [width, setWidth] = useState<number>(0);
     const progressBarRef = useRef<HTMLDivElement>(null);
     const dispath = useDispatch();
-    const {timeProgress, duration} = useSelector(playerSelector);
+    const {duration} = useSelector(playerSelector);
+    const translateRef = useRef<number>(null)
     const getToProcent = (wParent:number, wElement:number):number => {
         return Math.floor((wElement / wParent) * 100);
     }
@@ -24,44 +25,31 @@ export const ProgressBar = ({progressRef, playerRef, playAnimationRef}:{progress
         return draggableWidth
     }
     useEffect(() => {
-        if(isProcces === undefined) return
-        const listener = (eve) => {
-                if(isProcces) {
-                    console.log(timeProgress);
-                    playerRef.current.currentTime = timeProgress;
-                    playerRef.current.play();
+        if(!isProcces) return
+        const listener = () => {
+                if(isProcces && translateRef.current !== null) {
+                    playerRef.current.currentTime = translateRef.current;
+                    dispath(setIsPlaying(false));
                 }
-                // dispath(setTimeProgress(40))
             setIsProcces(false);
-            // if(eve.target === progressBarRef.current) {
-            //     console.log('CCCC');
-            //     playerRef.current.currentTime = 40;
-            //     playerRef.current.play();
-            //     dispath(setTimeProgress(40))
-            // }
-            // playerRef.current.currentTime = 30;
-            // playerRef.current.play();
-            // dispath(setTimeProgress(120))
         }
-
         document.body.addEventListener('pointerup', listener);
-        document.body.addEventListener('pointerdown', () => {console.log('POPOPOPOPO')})
-        return () => document.removeEventListener('pointerup', listener)
+        return () => document.body.removeEventListener('pointerup', listener)
     }, [isProcces]);
 
     useEffect(() => {
 
-        const pointerListener = (eve:PointerEvent) => {
+        const pointerListener:PointerEventHandler<HTMLBodyElement> = (eve:PointerEvent) => {
             eve.stopPropagation();
-            console.log('sss')
             if(progressBarRef.current && progressRef.current) {
-                playerRef.current.pause();
+                // playerRef.current.pause();
                 cancelAnimationFrame(playAnimationRef.current);
                 // dispath(setTimeProgress(120))
                 const translate:number =  width + (eve.clientX - cordinate);
                 const procent:number = getToProcent(progressBarRef.current?.clientWidth as number, applyConstraints(progressBarRef.current?.clientWidth as number, translate));
                 progressRef.current.style.width = getToProcent(progressBarRef.current?.clientWidth as number, applyConstraints(progressBarRef.current?.clientWidth as number, translate)) + '%';
-                dispath(setTimeProgress((duration / 100) * procent))
+                translateRef.current = (duration / 100) * procent;
+                dispath(setTimeProgress(translateRef.current));
             }
         }
         if(isProcces) {
@@ -72,17 +60,23 @@ export const ProgressBar = ({progressRef, playerRef, playAnimationRef}:{progress
         }
     }, [isProcces]);
 
+
+    const onMouseDown = (event:MouseEvent):void => {
+        const procent:number = getToProcent(progressBarRef.current?.clientWidth as number, event.nativeEvent.offsetX);
+        setIsProcces(true);
+
+        translateRef.current = (duration / 100) * procent
+        dispath(setTimeProgress(translateRef.current));
+        setCordinate(event.clientX)
+        setWidth(event.nativeEvent.offsetX);
+        cancelAnimationFrame(playAnimationRef.current);
+        progressRef.current.style.width = procent + '%';
+    }
     return (
-        <div ref={progressBarRef}  onMouseDown={(event) => {
-            console.log('CLICK');
-            setIsProcces(true);
-            setCordinate(event.clientX)
-            setWidth(event.nativeEvent.offsetX)
-            progressRef.current.style.width = getToProcent(progressBarRef.current?.clientWidth as number, event.nativeEvent.offsetX) + '%';
-        }}   className="w-full bg-gray-200  rounded-xl h-2.5  dark:bg-gray-700 cursor-pointer">
+        <div ref={progressBarRef}  onMouseDown={onMouseDown}  className="w-full bg-gray-200  rounded-xl h-2.5  dark:bg-gray-700 cursor-pointer">
             <motion.div  animate={{
                 transition: {
-                    width: { ease: "linear", duration: 1 }
+                    width: { ease: "linear", duration: 0.2 }
                 }
             }} ref={progressRef}  className="bg-green-600 rounded-xl w-0 h-2.5 dark:bg-green-500"></motion.div>
         </div>

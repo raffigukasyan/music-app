@@ -11,6 +11,7 @@ export const Player = ():JSX.Element => {
     const playerRef = useRef<HTMLAudioElement>(null);
     const progressRef = useRef<HTMLDivElement>(null)
     const playAnimationRef = useRef<number | undefined>(null);
+
     return (
             <BlockContainer className={'[grid-column:_span_3/5] flex items-center justify-between gap-x-2  px-4 py-4 w-full'}>
                 <PlayerName />

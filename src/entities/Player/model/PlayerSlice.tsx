@@ -9,6 +9,7 @@ export const initialState:IPlayer = {
         track: '/music/xcho-ty-i-ja.mp3',
     },
     timeProgress: 0,
+    isPlaying: false,
     duration: 0
 }
 
@@ -21,10 +22,14 @@ const playerSlice = createSlice({
         },
         setDuration: (state, action: PayloadAction<number>) => {
             state.duration = action.payload;
+        },
+        setIsPlaying: (state, action:PayloadAction<boolean>) => {
+            state.isPlaying = action.payload;
         }
+
     }
 })
 
 export const playerReducer = playerSlice.reducer
-export const {setTimeProgress, setDuration} = playerSlice.actions;
+export const {setIsPlaying, setTimeProgress, setDuration} = playerSlice.actions;
 export const playerSelector = (state) => state.player
