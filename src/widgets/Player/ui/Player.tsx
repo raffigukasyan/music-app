@@ -4,7 +4,7 @@ import {PlayerControl, PlayerProgressBar} from "@/features/Player";
 import {useSelector} from "react-redux";
 import {playerSelector} from "@/entities/Player";
 import {IPlayer} from "@/entities/Player/model/types.ts";
-import {useCallback, useRef} from "react";
+import {useRef} from "react";
 
 export const Player = ():JSX.Element => {
     const player:IPlayer = useSelector(playerSelector);

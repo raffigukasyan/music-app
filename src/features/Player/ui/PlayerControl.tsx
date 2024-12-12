@@ -63,10 +63,14 @@ export const PlayerControl:FC<IPlayerControlProps> = ({playerRef, progressRef, s
         const seconds:number = playerRef.current?.duration as number;
         dispatch(setDuration(seconds))
     }
+
+    const handleOnEnded = () => {
+        dispatch(setIsPlaying(false))
+    }
     return (
         <div className={'flex items-center gap-x-6'}>
             <Icon className={'w-5 h-5 text-myWhite hover:text-myGreen cursor-pointer transition-colors'} type={'prev'} />
-            <audio ref={playerRef}  src={src}  className={'hidden'} onLoadedMetadata={handleOnLoad} controls></audio>
+            <audio ref={playerRef}  src={src}  className={'hidden'} onLoadedMetadata={handleOnLoad} onEnded={handleOnEnded} controls></audio>
             <Pause isPlaying={isPlaying} onClick={() => dispatch(setIsPlaying(!isPlaying))} />
             <Icon className={'w-5 h-5 text-myWhite hover:text-myGreen cursor-pointer transition-colors'} type={'next'} />
         </div>
