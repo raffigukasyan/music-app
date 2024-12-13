@@ -9,33 +9,15 @@ interface IPlayerControlProps {
     src: string,
     playerRef: RefObject<HTMLAudioElement>,
     progressRef: RefObject<HTMLDivElement>,
-    playAnimationRef: RefObject<number | undefined>;
+    playAnimationRef: RefObject<number | undefined>,
+    updateProgress: () => void,
+    startAnimation: () => void;
 }
-export const PlayerControl:FC<IPlayerControlProps> = ({playerRef, progressRef, src, playAnimationRef}):JSX.Element => {
-    const {duration, isPlaying}: {duration: number, isPlaying:boolean} = useSelector(playerSelector)
+export const PlayerControl:FC<IPlayerControlProps> = ({playerRef, src, playAnimationRef, updateProgress, startAnimation}):JSX.Element => {
+    const {isPlaying}: {isPlaying:boolean} = useSelector(playerSelector)
     const dispatch = useDispatch();
 
-    const updateProgress = useCallback(() => {
-        if(playerRef.current && duration) {
-            const currentTime:number = playerRef.current.currentTime;
-            dispatch(setTimeProgress(currentTime))
-            progressRef.current.style.width = `${(currentTime / duration) * 100}%`
-        }
 
-    }, [duration])
-
-
-    const startAnimation = useCallback(() => {
-        if(playerRef.current && duration) {
-            const animate = () => {
-               // вызываем функцию обновления прогресс бара
-                updateProgress();
-                playAnimationRef.current = requestAnimationFrame(animate)
-            }
-            playAnimationRef.current = requestAnimationFrame(animate);
-
-        }
-    }, [duration, updateProgress])
 
 
     useEffect(() => {

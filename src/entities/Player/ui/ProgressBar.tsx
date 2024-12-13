@@ -3,7 +3,7 @@ import {motion} from "framer-motion";
 import {useDispatch, useSelector} from "react-redux";
 import {playerSelector} from "@/entities/Player";
 import {setIsPlaying, setTimeProgress} from "@/entities/Player/model/PlayerSlice.tsx";
-export const ProgressBar = ({progressRef, playerRef, playAnimationRef}:{progressRef: RefObject<HTMLDivElement>, playerRef:RefObject<HTMLAudioElement>, playAnimationRef:any}):JSX.Element => {
+export const ProgressBar = ({progressRef, playerRef, playAnimationRef, startAnimation, updateProgress}:{progressRef: RefObject<HTMLDivElement>, playerRef:RefObject<HTMLAudioElement>, playAnimationRef:any}):JSX.Element => {
     const [isProcces, setIsProcces] = useState<boolean>();
     const [cordinate, setCordinate] = useState<number>(0);
     const [width, setWidth] = useState<number>(0);
@@ -29,7 +29,8 @@ export const ProgressBar = ({progressRef, playerRef, playAnimationRef}:{progress
         const listener = () => {
                 if(isProcces && translateRef.current !== null) {
                     playerRef.current.currentTime = translateRef.current;
-                    dispath(setIsPlaying(false));
+                    startAnimation();
+                    // dispath(setIsPlaying(false));
                 }
             setIsProcces(false);
         }
