@@ -7,7 +7,6 @@ import {useGetPopularTracks} from "@/widgets/PopularTracks/lib/hooks/useGetPopul
 export const PopularSongs = (): JSX.Element => {
     const {data, loading} = useGetPopularTracks();
 
-    console.log(data);
     return (
         <section className={'mb-20'}>
             <SectionHead className={'mb-5'} head={'Популярное'}/>
