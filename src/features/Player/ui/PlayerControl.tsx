@@ -1,8 +1,8 @@
 import {Icon} from "@/shared";
 import {Pause, playerSelector} from "@/entities/Player"
-import {FC, RefObject, useCallback, useEffect} from "react";
+import {FC, RefObject, useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {setDuration, setTimeProgress, setIsPlaying} from "@/entities/Player/model/PlayerSlice.tsx";
+import {setDuration, setIsPlaying} from "@/entities/Player/model/PlayerSlice.tsx";
 
 
 interface IPlayerControlProps {
