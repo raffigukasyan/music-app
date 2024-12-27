@@ -15,6 +15,7 @@ const Layout = (): JSX.Element => {
         restDelta: 0.005
     });
 
+
     return (
         <main className={'font-roboto bg-myBlack h-full grid grid-cols-[max-content_auto_16%_auto] p-3 gap-4'}>
             <motion.div className="fixed left-0 origin-[0%] top-0 w-full h-1 bg-myGreen shadow-2xl" style={{scaleX}}/>

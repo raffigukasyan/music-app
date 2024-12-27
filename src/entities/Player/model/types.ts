@@ -1,12 +1,7 @@
-export interface IPlayerActive {
-    name: string,
-    artist: string,
-    track: string,
-    preview: string
-}
+import {IChartTracks} from "@/entities/Music";
 
 export interface IPlayer {
-    activePlayer: IPlayerActive,
+    activeMusic: IChartTracks,
     duration: number,
     timeProgress: number,
     isPlaying: boolean

@@ -2,7 +2,7 @@ import {Icon} from "@/shared";
 import {Pause, playerSelector} from "@/entities/Player"
 import {FC, RefObject, useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {setDuration, setIsPlaying} from "@/entities/Player/model/PlayerSlice.tsx";
+import {setDuration, setIsPlaying, setActiveMusic} from "@/entities/Player/model/PlayerSlice.tsx";
 
 
 interface IPlayerControlProps {
@@ -14,15 +14,24 @@ interface IPlayerControlProps {
     startAnimation: () => void;
 }
 export const PlayerControl:FC<IPlayerControlProps> = ({playerRef, src, playAnimationRef, updateProgress, startAnimation}):JSX.Element => {
-    const {isPlaying}: {isPlaying:boolean} = useSelector(playerSelector)
+    const {isPlaying}: {isPlaying:boolean} = useSelector(playerSelector);
+    const activeTrack = useSelector((state) => state.player.activeMusic);
     const dispatch = useDispatch();
 
-
-
+    //
+    // useEffect(() => {
+    //     console.log('EDITTT');
+    //     console.log(activeTrack);
+    //     dispatch(setIsPlaying(activeTrack.isPlay))
+    // }, [activeTrack]);
 
     useEffect(() => {
 
+
+        if(isPlaying === null) return
+
         if(isPlaying) {
+            console.log('QQWEWE');
             playerRef.current?.play();
             startAnimation();
         }
@@ -33,6 +42,7 @@ export const PlayerControl:FC<IPlayerControlProps> = ({playerRef, src, playAnima
                 playAnimationRef.current = null
             }
             updateProgress();
+            // dispatch(setActiveMusic({...activeTrack, isPlay: false}))
         }
         return () => {
             if(playAnimationRef.current !== null) {
@@ -49,10 +59,11 @@ export const PlayerControl:FC<IPlayerControlProps> = ({playerRef, src, playAnima
     const handleOnEnded = () => {
         dispatch(setIsPlaying(false))
     }
+    console.log('RENDER PLAYER CONTROL');
     return (
         <div className={'flex items-center gap-x-6'}>
             <Icon className={'w-5 h-5 text-myWhite hover:text-myGreen cursor-pointer transition-colors'} type={'prev'} />
-            <audio ref={playerRef}  src={src}  className={'hidden'} onLoadedMetadata={handleOnLoad} onEnded={handleOnEnded} controls></audio>
+            <audio crossOrigin="anonymous" ref={playerRef}  src={src}  className={'hidden'} onLoadedMetadata={handleOnLoad} onEnded={handleOnEnded} controls></audio>
             <Pause isPlaying={isPlaying} onClick={() => dispatch(setIsPlaying(!isPlaying))} />
             <Icon className={'w-5 h-5 text-myWhite hover:text-myGreen cursor-pointer transition-colors'} type={'next'} />
         </div>

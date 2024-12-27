@@ -37,12 +37,13 @@ export const Player = ():JSX.Element => {
         }
     }, [duration, updateProgress]);
 
+    console.log(player, 'playerRRRR');
 
     return (
             <BlockContainer className={'[grid-column:_span_3/5] flex items-center justify-between gap-x-2  px-4 py-4 w-full'}>
                 <PlayerName />
                 <div className={'flex-1 flex flex-col gap-y-3 items-center justify-center'}>
-                    <PlayerControl playAnimationRef={playAnimationRef} playerRef={playerRef} src={player.activePlayer.track} updateProgress={updateProgress} startAnimation={startAnimation} />
+                    <PlayerControl playAnimationRef={playAnimationRef} playerRef={playerRef} src={player.activeMusic.audio} updateProgress={updateProgress} startAnimation={startAnimation} />
                     <PlayerProgressBar playAnimationRef={playAnimationRef}  playerRef={playerRef} progressRef={progressRef} startAnimation={startAnimation} updateProgress={updateProgress} />
                 </div>
             </BlockContainer>
