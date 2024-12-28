@@ -19,11 +19,11 @@ export const PlayerControl:FC<IPlayerControlProps> = ({playerRef, src, playAnima
     const dispatch = useDispatch();
 
     //
-    // useEffect(() => {
-    //     console.log('EDITTT');
-    //     console.log(activeTrack);
-    //     dispatch(setIsPlaying(activeTrack.isPlay))
-    // }, [activeTrack]);
+    useEffect(() => {
+        console.log('EDITTT');
+        console.log(activeTrack);
+       dispatch(setIsPlaying(activeTrack.isPlay))
+    }, [activeTrack]);
 
     useEffect(() => {
 
@@ -34,15 +34,17 @@ export const PlayerControl:FC<IPlayerControlProps> = ({playerRef, src, playAnima
             console.log('QQWEWE');
             playerRef.current?.play();
             startAnimation();
+            dispatch(setActiveMusic({...activeTrack, isPlay: true}))
         }
         else {
+            console.log('AHAH');
             playerRef.current?.pause();
             if(playAnimationRef.current !== null) {
                 cancelAnimationFrame(playAnimationRef.current);
                 playAnimationRef.current = null
             }
             updateProgress();
-            // dispatch(setActiveMusic({...activeTrack, isPlay: false}))
+            dispatch(setActiveMusic({...activeTrack, isPlay: false}))
         }
         return () => {
             if(playAnimationRef.current !== null) {

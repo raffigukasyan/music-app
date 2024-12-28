@@ -37,7 +37,7 @@ export const Player = ():JSX.Element => {
         }
     }, [duration, updateProgress]);
 
-    console.log(player, 'playerRRRR');
+
 
     return (
             <BlockContainer className={'[grid-column:_span_3/5] flex items-center justify-between gap-x-2  px-4 py-4 w-full'}>

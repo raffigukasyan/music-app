@@ -1,24 +1,21 @@
+import {FC} from "react";
 import {PreviewImage} from "@/entities/Music/ui/PreviewImage.tsx";
-import {batch, useDispatch} from "react-redux";
-import {setActiveMusic, setIsPlaying} from "@/entities/Player/model/PlayerSlice.tsx";
-import {IChartTracks} from "@/entities/Music";
+import {useDispatch} from "react-redux";
+import {setActiveMusic} from "@/entities/Player/model/PlayerSlice.tsx";
 import {memo} from "react";
+import {IItemTrackProps} from "@/widgets/PopularTracks/model/types.ts";
 
-export const PlayMusic = memo(({track, isActive}:{track: IChartTracks, isActive: boolean}) => {
+export const PlayMusic:FC<IItemTrackProps> = memo(({track, isActive, isPlaying}) => {
 
    const dispatch = useDispatch();
 
     const handlePlay = () => {
-        batch(() => {
-            dispatch(setActiveMusic(track));
-            dispatch(setIsPlaying(true))
-        })
-        // dispatch(setActiveMusic(track));
+            dispatch(setActiveMusic({...track, isPlay: isPlaying !== null ? !isPlaying : true}));
     }
 
-    console.log('RENDERRRRR PREWWW');
+    console.log('RENDERRRRR PREWWW', isPlaying);
 
     return (
-        <PreviewImage isActive={isActive}  onClick={handlePlay} src={track.image} className={'max-w-10 2xl:max-w-14'} />
+        <PreviewImage isActive={isActive} isPlaying={isPlaying} onClick={handlePlay} src={track.image} className={'max-w-10 2xl:max-w-14'} />
     )
 })

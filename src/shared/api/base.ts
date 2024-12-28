@@ -1,4 +1,7 @@
 import axios from 'axios';
 export const api = axios.create({
-    baseURL: `https://kindhearted-mercury-healer.glitch.me/`
+    baseURL: `https://kindhearted-mercury-healer.glitch.me/`,
+    headers: {
+        'Content-Type': 'application/json',
+    },
 })

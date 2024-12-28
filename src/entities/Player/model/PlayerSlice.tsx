@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {IPlayer} from "@/entities/Player/model/types.ts";
-import {IChartTracks} from "@/entities/Music";
+import {IPlayer, IActiveMusic} from "@/entities/Player/model/types.ts";
+
 
 export const initialState:IPlayer = {
     activeMusic: {
@@ -10,10 +10,10 @@ export const initialState:IPlayer = {
         album: 'QQQ',
         image: 'https://t2.genius.com/unsafe/340x340/https%3A%2F%2Fimages.genius.com%2F96f8bb4a817965cb857c1009d076d721.1000x1000x1.png',
         audio: '/music/xcho-ty-i-ja.mp3',
-        // isPlay: false
+        isPlay: false
     },
     timeProgress: 0,
-    isPlaying: null,
+    isPlaying: false,
     duration: 0
 }
 
@@ -30,10 +30,9 @@ const playerSlice = createSlice({
         setIsPlaying: (state, action:PayloadAction<boolean>) => {
             state.isPlaying = action.payload;
         },
-        setActiveMusic: (state, action:PayloadAction<IChartTracks>) => {
-            if (state.activeMusic.id !== action.payload.id) {
+        setActiveMusic: (state, action:PayloadAction<IActiveMusic>) => {
                 state.activeMusic = { ...action.payload };
-            }
+
         }
 
     }
