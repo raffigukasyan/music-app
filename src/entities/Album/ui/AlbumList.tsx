@@ -1,4 +1,4 @@
-8import {Swiper, SwiperSlide} from "swiper/react";
+import {Swiper, SwiperSlide} from "swiper/react";
 import {AlbumCard} from "@/entities/Album";
 
 import {IAlbumList} from "@/entities/Album/model/types.ts";
