@@ -2,7 +2,7 @@ import {PointerEvent, PointerEventHandler, RefObject, useEffect, useRef, useStat
 import {motion} from "framer-motion";
 import {useDispatch, useSelector} from "react-redux";
 import {playerSelector} from "@/entities/Player";
-import {setIsPlaying, setTimeProgress} from "@/entities/Player/model/PlayerSlice.tsx";
+import {setIsPlaying, setTimeProgress} from "@/entities/Player/model/PlayerSlice.ts";
 export const ProgressBar = ({progressRef, playerRef, playAnimationRef, startAnimation, updateProgress}:{progressRef: RefObject<HTMLDivElement>, playerRef:RefObject<HTMLAudioElement>, playAnimationRef:any}):JSX.Element => {
     const [isProcces, setIsProcces] = useState<boolean>();
     const [cordinate, setCordinate] = useState<number>(0);

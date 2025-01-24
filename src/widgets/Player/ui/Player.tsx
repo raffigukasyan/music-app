@@ -5,7 +5,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {playerSelector} from "@/entities/Player";
 import {IPlayer} from "@/entities/Player/model/types.ts";
 import {useCallback, useRef} from "react";
-import {setTimeProgress} from "@/entities/Player/model/PlayerSlice.tsx";
+import {setTimeProgress} from "@/entities/Player/model/PlayerSlice.ts";
+import {PlayerInfo} from "@/entities/Player/ui/PlayerInfo.tsx";
 
 export const Player = ():JSX.Element => {
     const player:IPlayer = useSelector(playerSelector);
@@ -41,7 +42,7 @@ export const Player = ():JSX.Element => {
 
     return (
             <BlockContainer className={'[grid-column:_span_3/5] flex items-center justify-between gap-x-2  px-4 py-4 w-full'}>
-                <PlayerName />
+                <PlayerInfo name={player?.activeMusic.name} artist={player?.activeMusic.artist} image={player?.activeMusic.image} />
                 <div className={'flex-1 flex flex-col gap-y-3 items-center justify-center'}>
                     <PlayerControl playAnimationRef={playAnimationRef} playerRef={playerRef} src={player.activeMusic.audio} updateProgress={updateProgress} startAnimation={startAnimation} />
                     <PlayerProgressBar playAnimationRef={playAnimationRef}  playerRef={playerRef} progressRef={progressRef} startAnimation={startAnimation} updateProgress={updateProgress} />

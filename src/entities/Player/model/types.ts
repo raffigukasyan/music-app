@@ -1,4 +1,4 @@
-import {IChartTracks} from "@/entities/Music";
+import {ITrack} from "@/entities/Music";
 
 export interface IPlayer {
     activeMusic: IActiveMusic,
@@ -7,6 +7,7 @@ export interface IPlayer {
     isPlaying: boolean
 }
 
-export interface IActiveMusic extends Partial<IChartTracks> {
+export interface IActiveMusic extends Partial<ITrack> {
     isPlay: boolean
 }
+

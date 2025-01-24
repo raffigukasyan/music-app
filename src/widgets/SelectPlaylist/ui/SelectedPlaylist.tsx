@@ -1,6 +1,8 @@
 import {FC} from "react";
 import {PlaylistPreview} from "@/entities/Playlist";
 import {InfoPlaylist} from "@/widgets/SelectPlaylist/ui/InfoPlaylist.tsx";
+import {useSelector} from "react-redux";
+import {selectedPlaylist} from "@/widgets/SelectPlaylist";
 
 interface ISelectedPlaylistProps {
     name: string;
@@ -17,11 +19,19 @@ interface ITracks {
     preview: string,
 }
 
-export const SelectedPlaylist:FC<ISelectedPlaylistProps> = ({playlist}):JSX.Element => {
+export const SelectedPlaylist:FC<ISelectedPlaylistProps> = ():JSX.Element => {
+
+    const playlist = useSelector(selectedPlaylist);
+
+    console.log(playlist)
     return (
-        <div className={'[grid-column:_span_2] flex flex-col gap-y-6 rounded-3xl bg-myBlack-200 p-4'}>
-            <PlaylistPreview img={'https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/af/73/5a/af735a4b-f374-7a1b-61c3-eaac06abbccd/cover.jpg/600x600bf-60.jpg'} />
-            <InfoPlaylist name={playlist.name} description={playlist.description} likes={playlist.likes} songs={playlist.songCount}/>
-        </div>
+       <>
+           {
+               Object.values(playlist).length ? <div className={'[grid-column:_span_2] flex flex-col gap-y-6 rounded-3xl bg-myBlack-200 p-4'}>
+                   <PlaylistPreview img={playlist.image} />
+                   <InfoPlaylist name={playlist.name} description={playlist.description} likes={playlist.likes} songs={playlist.duration}/>
+               </div> : null
+           }
+           </>
     )
 }

@@ -6,7 +6,7 @@ import {IItemTrackProps} from "@/widgets/PopularTracks/model/types.ts";
 
 
 export const PopularItem:FC<IItemTrackProps> = memo(({track, isActive, isPlaying}):JSX.Element => {
-    console.log('RENDER ITEM');
+
     return (
         <div className={'grid grid-cols-[50px_2fr_2fr_1fr_50px] items-center'}>
             <p className={'text-gray-400'}>{track.id}</p>

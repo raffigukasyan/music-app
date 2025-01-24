@@ -7,7 +7,7 @@ interface IInfoPlaylistProps {
 
 export const InfoPlaylist =  ({name, description, likes, songs}):JSX.Element => {
     return (
-        <div className={'flex flex-col gap-y-6'}>
+        <div className={'flex flex-col max-w-[250px] gap-y-6'}>
             <p className={'text-3xl text-myWhite font-bold'}>{name}</p>
             <p className={'text-gray-300'}>{description}</p>
             <div className={'flex gap-x-2 items-center'}>

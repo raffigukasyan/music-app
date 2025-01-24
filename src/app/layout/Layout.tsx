@@ -25,13 +25,7 @@ const Layout = (): JSX.Element => {
                  className={'rounded-2xl [grid-column:_span_1] overflow-x-hidden overflow-y-scroll hide-scroll'}>
                 <Outlet/>
             </div>
-            <SelectedPlaylist playlist={{
-                name: 'Top Avg',
-                preview: 'https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/af/73/5a/af735a4b-f374-7a1b-61c3-eaac06abbccd/cover.jpg/600x600bf-60.jpg',
-                likes: 3232,
-                songCount: 23,
-                description: 'Top artisit in 2024 year'
-            }} />
+            <SelectedPlaylist  />
             <Player/>
         </main>
     )

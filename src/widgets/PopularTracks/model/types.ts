@@ -1,7 +1,7 @@
-import {IChartTracks} from "@/entities/Music";
+import {ITrack} from "@/entities/Music";
 
 export interface IItemTrackProps {
-    track: IChartTracks,
+    track: ITrack,
     isActive: boolean,
     isPlaying: boolean
 }

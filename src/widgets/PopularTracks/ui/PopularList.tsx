@@ -1,22 +1,22 @@
 import {PopularItem} from "@/widgets/PopularTracks/ui/PopularItem.tsx";
-import {IChartTracks} from "src/entities/Music";
+import {ITrack} from "src/entities/Music";
 import {FC} from "react";
 import {SkeletonList} from "@/widgets/PopularTracks/ui/SkeletonList.tsx";
 import {useSelector} from "react-redux";
-interface IChartTracksProps {
-    chartTracks: IChartTracks[],
+interface ITrackProps {
+    chartTracks: ITrack[],
     loading: boolean
 }
 
-export const PopularList: FC<IChartTracksProps> = ({chartTracks, loading}): JSX.Element => {
+export const PopularList: FC<ITrackProps> = ({chartTracks, loading}): JSX.Element => {
 
     const activeTrack = useSelector((state) => state?.player?.activeMusic);
-    console.log("Rendering PopularList");
+
 
     return (
         loading ? <SkeletonList />
             : <div className={'flex flex-col gap-y-5'}>
-            {chartTracks.map((track: IChartTracks) => (
+            {chartTracks.map((track: ITrack) => (
                 <PopularItem key={track.id} track={track} isPlaying={activeTrack.id === track.id ? activeTrack.isPlay : false} isActive={activeTrack.id === track.id} />
             ))}
         </div>

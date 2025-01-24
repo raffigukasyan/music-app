@@ -2,7 +2,7 @@ import {Icon} from "@/shared";
 import {Pause, playerSelector} from "@/entities/Player"
 import {FC, RefObject, useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {setDuration, setIsPlaying, setActiveMusic} from "@/entities/Player/model/PlayerSlice.tsx";
+import {setDuration, setIsPlaying, setActiveMusic} from "@/entities/Player/model/PlayerSlice.ts";
 
 
 interface IPlayerControlProps {
@@ -20,8 +20,7 @@ export const PlayerControl:FC<IPlayerControlProps> = ({playerRef, src, playAnima
 
     //
     useEffect(() => {
-        console.log('EDITTT');
-        console.log(activeTrack);
+
        dispatch(setIsPlaying(activeTrack.isPlay))
     }, [activeTrack]);
 
@@ -31,13 +30,12 @@ export const PlayerControl:FC<IPlayerControlProps> = ({playerRef, src, playAnima
         if(isPlaying === null) return
 
         if(isPlaying) {
-            console.log('QQWEWE');
             playerRef.current?.play();
             startAnimation();
             dispatch(setActiveMusic({...activeTrack, isPlay: true}))
         }
         else {
-            console.log('AHAH');
+
             playerRef.current?.pause();
             if(playAnimationRef.current !== null) {
                 cancelAnimationFrame(playAnimationRef.current);
@@ -61,7 +59,6 @@ export const PlayerControl:FC<IPlayerControlProps> = ({playerRef, src, playAnima
     const handleOnEnded = () => {
         dispatch(setIsPlaying(false))
     }
-    console.log('RENDER PLAYER CONTROL');
     return (
         <div className={'flex items-center gap-x-6'}>
             <Icon className={'w-5 h-5 text-myWhite hover:text-myGreen cursor-pointer transition-colors'} type={'prev'} />

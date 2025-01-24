@@ -1,4 +1,4 @@
-export interface IChartTracks {
+export interface ITrack {
     id: number,
     name: string,
     artist: string,
@@ -6,4 +6,10 @@ export interface IChartTracks {
     album: string,
     audio: string,
     duration: string
+}
+
+export interface ITrackInfo {
+    name: string,
+    artist: string,
+    image: string
 }
