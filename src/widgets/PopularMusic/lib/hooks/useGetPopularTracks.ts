@@ -1,14 +1,14 @@
 import {useState, useEffect, useCallback} from "react";
-import {fetchPopularTracks} from "@/widgets/PopularTracks/api/fetchPopularTracks.ts";
+import {fetchPopularMusic} from "@/widgets/PopularMusic/api/fetchPopularMusic.ts";
 import {ITrack} from "src/entities/Music";
 
 export const useGetPopularTracks  =  () => {
     const [data, setData] = useState<ITrack[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<Error | unknown>()
-    const getPopularTracks = useCallback(async () => {
+    const getPopularMusic = useCallback(async () => {
         try {
-            const data = await fetchPopularTracks();
+            const data = await fetchPopularMusic();
             setData(data);
             setLoading(false);
         }
@@ -18,7 +18,7 @@ export const useGetPopularTracks  =  () => {
     }, [])
 
     useEffect(() => {
-        getPopularTracks();
+        getPopularMusic();
     }, []);
 
     return {data, loading, error}

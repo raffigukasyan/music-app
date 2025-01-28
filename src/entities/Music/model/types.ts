@@ -1,4 +1,4 @@
-export interface ITrack {
+export interface IMusic {
     id: number,
     name: string,
     artist: string,
@@ -8,7 +8,7 @@ export interface ITrack {
     duration: string
 }
 
-export interface ITrackInfo {
+export interface IMusicInfo {
     name: string,
     artist: string,
     image: string
