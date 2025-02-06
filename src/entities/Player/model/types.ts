@@ -1,13 +1,13 @@
-import {ITrack} from "@/entities/Music";
+import {Music} from "@/entities/Music";
 
 export interface IPlayer {
-    activeMusic: IActiveMusic,
+    playingMusic: IPlayingMusic,
     duration: number,
     timeProgress: number,
     isPlaying: boolean
 }
 
-export interface IActiveMusic extends Partial<ITrack> {
+export interface IPlayingMusic extends Partial<Music.IMusic> {
     isPlay: boolean
 }
 

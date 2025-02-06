@@ -1,5 +1,6 @@
-import {Icon} from "@/shared";
 import { AnimatePresence } from "motion/react";
+
+import {Icon} from "@/shared";
 
 export const Pause = ({isPlaying, onClick}: {isPlaying?: boolean, onClick: React.MouseEventHandler}):JSX.Element => {
     return (

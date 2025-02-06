@@ -1,6 +1,7 @@
 import {FC, memo} from "react";
-import {Icon} from "@/shared"
+
 import {PlayMusic} from "@/features/PlayMusic";
+import {Icon} from "@/shared"
 import {IItemTrackProps} from "@/widgets/PopularMusic/model/types.ts";
 
 

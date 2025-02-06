@@ -1,12 +1,17 @@
-import {configureStore} from "@reduxjs/toolkit";
-import {playerReducer} from "@/entities/Player";
-import {albumsReducer} from "@/entities/Album";
-import {selectedPlaylistReducer} from "@/widgets/SelectPlaylist";
+import { configureStore } from "@reduxjs/toolkit";
 
-export default configureStore({
-    reducer: {
-        albums: albumsReducer,
-        player: playerReducer,
-        selectedPlaylist: selectedPlaylistReducer
-    }
-})
+import { albumsReducer } from "@/entities/Album";
+import playerSlice from "@/entities/Player";
+import { selectedPlaylistReducer } from "@/widgets/SelectPlaylist";
+
+export const store = configureStore({
+  reducer: {
+    albums: albumsReducer,
+    player: playerSlice,
+    selectedPlaylist: selectedPlaylistReducer,
+  },
+});
+
+export type RootState = ReturnType<typeof store.getState>;
+
+export type AppDispatch = typeof store.dispatch;

@@ -1,18 +1,35 @@
-import {FC} from "react";
-import {PreviewImage} from "@/entities/Music/ui/PreviewImage.tsx";
-import {useDispatch} from "react-redux";
-import {setActiveMusic} from "@/entities/Player/model/PlayerSlice.ts";
-import {IItemTrackProps} from "@/widgets/PopularMusic/model/types.ts";
+import { FC } from "react";
 
-export const PlayMusic:FC<IItemTrackProps> = ({track, isActive, isPlaying}) => {
+import { useDispatch } from "react-redux";
 
-   const dispatch = useDispatch();
+import { PreviewImage } from "@/entities/Music/ui/PreviewImage.tsx";
+import { setActiveMusic } from "@/entities/Player/model/PlayerSlice.ts";
+import { IItemTrackProps } from "@/widgets/PopularMusic/model/types.ts";
 
-    const handlePlay = () => {
-            dispatch(setActiveMusic({...track, isPlay: isPlaying !== null ? !isPlaying : true}));
-    }
+export const PlayMusic: FC<IItemTrackProps> = ({
+  track,
+  isActive,
+  isPlaying,
+}) => {
+  const dispatch = useDispatch();
 
-    return (
-        <PreviewImage isActive={isActive} isPlaying={isPlaying} onClick={handlePlay} src={track.image} className={'max-w-10 2xl:max-w-14'} />
-    )
-}
+  const handlePlay = () => {
+    console.log('DDDD');
+    dispatch(
+      setActiveMusic({
+        ...track,
+        isPlay: isPlaying !== null ? !isPlaying : true,
+      })
+    );
+  };
+
+  return (
+    <PreviewImage
+      isActive={isActive}
+      isPlaying={isPlaying}
+      onClick={handlePlay}
+      src={track.image}
+      className={"max-w-10 2xl:max-w-14"}
+    />
+  );
+};

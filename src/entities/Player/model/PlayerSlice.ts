@@ -1,9 +1,10 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {IPlayer, IActiveMusic} from "@/entities/Player/model/types.ts";
+
+import {IPlayer, IPlayingMusic} from "@/entities/Player/model/types.ts";
 
 
-export const initialState:IPlayer = {
-    activeMusic: {
+const initialState:IPlayer = {
+    playingMusic: {
         id: 0,
         name: 'Ты и я',
         artist: 'XCHO',
@@ -30,17 +31,14 @@ const playerSlice = createSlice({
         setIsPlaying: (state, action:PayloadAction<boolean>) => {
             state.isPlaying = action.payload;
         },
-        setActiveMusic: (state, action:PayloadAction<IActiveMusic>) => {
-                state.activeMusic = { ...action.payload };
+        setActiveMusic: (state, action:PayloadAction<IPlayingMusic>) => {
+          console.log('change state')
+                state.playingMusic = { ...action.payload };
 
         }
 
     }
 })
 
-export const playerReducer = playerSlice.reducer
+export default playerSlice.reducer
 export const {setIsPlaying, setTimeProgress, setDuration, setActiveMusic} = playerSlice.actions;
-export const playerSelector = (state) => state.player
-
-export const selectedMusic = (state) => state.player.activeMusic
-export const isPlaying = (state) => state.player.isPlaying
