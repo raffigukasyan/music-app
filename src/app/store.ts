@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import { albumsReducer } from "@/entities/Album";
-import playerSlice from "@/entities/Player";
+import { playerSlice } from "@/entities/Player";
 import { selectedPlaylistReducer } from "@/widgets/SelectPlaylist";
 
 export const store = configureStore({

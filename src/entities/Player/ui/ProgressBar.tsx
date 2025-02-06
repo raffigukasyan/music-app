@@ -1,4 +1,5 @@
 import {
+  FC,
   PointerEvent,
   PointerEventHandler,
   RefObject,
@@ -8,23 +9,28 @@ import {
 } from "react";
 
 import { motion } from "framer-motion";
-import { useDispatch, useSelector } from "react-redux";
 
-import { playerSelector } from "@/entities/Player";
-import {
-  setIsPlaying,
-  setTimeProgress,
-} from "@/entities/Player/model/PlayerSlice.ts";
-export const ProgressBar = ({
+import { getToProcent } from "../lib/getToProcent";
+import { applyConstraints } from "../lib/applyConstraints";
+
+interface IProgressBar {
+  progressRef: RefObject<HTMLDivElement>;
+  playerRef: RefObject<HTMLAudioElement>;
+  playAnimationRef: any;
+  duration: number;
+  startAnimation: () => void;
+  changeTime: (value: number) => void;
+  changePlay: (value: boolean) => void;
+}
+
+export const ProgressBar: FC<IProgressBar> = ({
   progressRef,
   playerRef,
   playAnimationRef,
   startAnimation,
-  updateProgress,
-}: {
-  progressRef: RefObject<HTMLDivElement>;
-  playerRef: RefObject<HTMLAudioElement>;
-  playAnimationRef: any;
+  duration,
+  changeTime,
+  changePlay,
 }): JSX.Element => {
   const [isProcces, setIsProcces] = useState<boolean>();
   const [cordinate, setCordinate] = useState<number>(0);
@@ -32,31 +38,14 @@ export const ProgressBar = ({
 
   const translateRef = useRef<number>(null);
   const progressBarRef = useRef<HTMLDivElement>(null);
-  //const dispath = useDispatch();
- // const { duration } = useSelector(playerSelector);
-  const getToProcent = (wParent: number, wElement: number): number => {
-    return Math.floor((wElement / wParent) * 100);
-  };
 
-  const applyConstraints = (
-    containerWidth: number,
-    draggableWidth: number
-  ): number => {
-    if (draggableWidth < 0) {
-      return 0;
-    } else if (draggableWidth > containerWidth) {
-      return containerWidth;
-    }
-    return draggableWidth;
-  };
-  
   useEffect(() => {
     if (!isProcces) return;
     const listener = () => {
       if (isProcces && translateRef.current !== null) {
         playerRef.current.currentTime = translateRef.current;
         startAnimation();
-        // dispath(setIsPlaying(false));
+        changePlay(false);
       }
       setIsProcces(false);
     };
@@ -72,7 +61,6 @@ export const ProgressBar = ({
       if (progressBarRef.current && progressRef.current) {
         // playerRef.current.pause();
         cancelAnimationFrame(playAnimationRef.current);
-        // dispath(setTimeProgress(120))
         const translate: number = width + (eve.clientX - cordinate);
         const procent: number = getToProcent(
           progressBarRef.current?.clientWidth as number,
@@ -81,16 +69,10 @@ export const ProgressBar = ({
             translate
           )
         );
-        progressRef.current.style.width =
-          getToProcent(
-            progressBarRef.current?.clientWidth as number,
-            applyConstraints(
-              progressBarRef.current?.clientWidth as number,
-              translate
-            )
-          ) + "%";
+        progressRef.current.style.width = procent + "%";
         translateRef.current = (duration / 100) * procent;
-        dispath(setTimeProgress(translateRef.current));
+        console.log((duration / 100) * procent, "dddd");
+        changeTime(translateRef.current);
       }
     };
     if (isProcces) {
@@ -109,7 +91,7 @@ export const ProgressBar = ({
     setIsProcces(true);
 
     translateRef.current = (duration / 100) * procent;
-    dispath(setTimeProgress(translateRef.current));
+    changeTime(translateRef.current);
     setCordinate(event.clientX);
     setWidth(event.nativeEvent.offsetX);
     cancelAnimationFrame(playAnimationRef.current);
