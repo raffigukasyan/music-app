@@ -6,6 +6,7 @@ import { formatTime, ProgressBar } from "@/entities/Player";
 import {
   setTimeProgress,
   setActiveMusic,
+  setIsPlaying,
 } from "@/entities/Player/model/PlayerSlice.ts";
 import {
   selectDuration,
@@ -72,6 +73,14 @@ export const PlayerProgressBar = ({
 
   console.log("RENDER PLAYBAR");
 
+  const onChangePlay = (value: boolean) => {
+    console.log(value);
+    dispatch(setIsPlaying(value));
+  };
+  const onChangeTime = (value: number) => {
+    console.log(value);
+    dispatch(setTimeProgress(value));
+  };
   return (
     <div
       className={
@@ -87,6 +96,9 @@ export const PlayerProgressBar = ({
         progressRef={progressRef}
         startAnimation={startAnimation}
         updateProgress={updateProgress}
+        changeTime={onChangeTime}
+        changePlay={onChangePlay}
+        duration={duration}
       />
       <span className={"text-gray-300 text-base"}>{formatTime(duration)}</span>
     </div>
