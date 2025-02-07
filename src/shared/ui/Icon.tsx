@@ -1,5 +1,5 @@
-import {MusicIcon, NextMusic, PrevMusic} from "@/shared/ui/Icons/Icons.tsx";
 import {FC} from "react";
+
 import {
     BuildingLibraryIcon,
     HomeIcon,
@@ -22,6 +22,8 @@ import {
     PauseIcon,
     PlayIcon
 } from "@heroicons/react/24/outline";
+
+import {MusicIcon, NextMusic, PrevMusic} from "@/shared/ui/Icons/Icons.tsx";
 
 
 

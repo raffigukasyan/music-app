@@ -1,5 +1,7 @@
-import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
+
+import {useDispatch, useSelector} from "react-redux";
+
 import {getAlbums, selectAlbums, selectLoading} from "@/entities/Album";
 import {AlbumList} from "@/entities/Album/ui/AlbumList.tsx";
 

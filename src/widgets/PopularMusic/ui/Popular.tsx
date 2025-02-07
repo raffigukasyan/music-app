@@ -1,8 +1,8 @@
 import {Filter} from "@/features/FilterPopularSongs";
 import {SectionHead} from "@/shared";
+import {useGetPopularTracks} from "@/widgets/PopularMusic/lib/hooks/useGetPopularTracks.ts";
 import {PopularList} from "@/widgets/PopularMusic/ui/PopularList.tsx";
 
-import {useGetPopularTracks} from "@/widgets/PopularMusic/lib/hooks/useGetPopularTracks.ts";
 
 export const Popular = (): JSX.Element => {
     const {data, loading} = useGetPopularTracks();

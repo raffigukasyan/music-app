@@ -1,7 +1,9 @@
-import {PreviewImage} from "@/shared/ui/PreviewImage.tsx";
-import {SubTitle, Title} from "@/shared";
-import {ITrackInfo} from "@/entities/Music";
 import {FC} from "react";
+
+import {ITrackInfo} from "@/entities/Music";
+import {SubTitle, Title} from "@/shared";
+import {PreviewImage} from "@/shared/ui/PreviewImage.tsx";
+
 
 export const PlayerInfo:FC<ITrackInfo> = (
     {name, artist, image}

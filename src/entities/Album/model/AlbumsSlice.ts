@@ -1,5 +1,6 @@
 
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+
 import {fetchAlbums} from "@/entities/Album/api/fetchAlbums.ts";
 
 const initialState = {

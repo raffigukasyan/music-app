@@ -1,10 +1,12 @@
+import {useRef} from "react";
+
+import {motion, useScroll, useSpring} from "framer-motion"
 import {Outlet} from "react-router-dom";
-import {Sidebar} from "@/widgets/Sidebar/index.ts";
+
 import {Header} from "@/widgets/Header/index.ts";
 import {Player} from "@/widgets/Player";
-import {motion, useScroll, useSpring} from "framer-motion"
-import {useRef} from "react";
 import {SelectedPlaylist} from "@/widgets/SelectPlaylist";
+import {Sidebar} from "@/widgets/Sidebar/index.ts";
 
 const Layout = (): JSX.Element => {
     const mainRef = useRef<HTMLDivElement>(null);

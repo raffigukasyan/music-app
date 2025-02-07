@@ -1,6 +1,8 @@
 import {useState, useEffect, useCallback} from "react";
-import {fetchPopularMusic} from "@/widgets/PopularMusic/api/fetchPopularMusic.ts";
+
 import {ITrack} from "src/entities/Music";
+
+import {fetchPopularMusic} from "@/widgets/PopularMusic/api/fetchPopularMusic.ts";
 
 export const useGetPopularTracks  =  () => {
     const [data, setData] = useState<ITrack[]>([]);

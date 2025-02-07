@@ -1,6 +1,7 @@
-import {IImage} from "@/shared/types/ImgType.ts";
 import {FC} from "react";
+
 import {AlbumPreview} from "@/entities/Album/ui/AlbumPreview.tsx";
+import {IImage} from "@/shared/types/ImgType.ts";
 
 interface IAlbumCardProps {
     name: string,

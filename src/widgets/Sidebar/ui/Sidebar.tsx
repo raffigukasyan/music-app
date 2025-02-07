@@ -1,11 +1,15 @@
 
-import {NavigationList} from "@/widgets/Sidebar/ui/NavigationList.tsx";
+import {createContext, useState} from "react";
+
+import {motion, Variants} from "framer-motion";
+
 import {AUTH_NAVIGATION_MENU, NAVIGATION_MENU} from "@/shared/consts/navMenu.ts";
-import {OpenButton} from "@/widgets/Sidebar/ui/OpenButton.tsx";
 import {Icon} from "@/shared/index.ts";
 import {NavigationItem} from "@/widgets/Sidebar/ui/NavigationItem.tsx";
-import {motion, Variants} from "framer-motion";
-import {createContext, useState} from "react";
+import {NavigationList} from "@/widgets/Sidebar/ui/NavigationList.tsx";
+import {OpenButton} from "@/widgets/Sidebar/ui/OpenButton.tsx";
+
+
 
 export interface ISidebarContext {
     variantsElement: Variants,

@@ -1,5 +1,5 @@
-import {Breadcrumbs} from "@/shared";
 import {Search} from "@/features/Search/index.ts";
+import {Breadcrumbs} from "@/shared";
 import {Settings} from "@/widgets/Header/ui/Settings.tsx";
 
 export const Header = ():JSX.Element => {

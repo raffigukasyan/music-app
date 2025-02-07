@@ -1,8 +1,11 @@
-import {INavigationMenu} from "@/shared/consts/navMenu.ts";
-import {NavLink} from "react-router-dom";
 import {FC} from "react";
-import {NavigationItem} from "@/widgets/Sidebar/ui/NavigationItem.tsx";
+
 import { Variants} from "framer-motion";
+import {NavLink} from "react-router-dom";
+
+import {INavigationMenu} from "@/shared/consts/navMenu.ts";
+import {NavigationItem} from "@/widgets/Sidebar/ui/NavigationItem.tsx";
+
 
 interface NavigationListProps {
     routes: INavigationMenu[],

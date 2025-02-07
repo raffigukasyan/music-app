@@ -1,14 +1,13 @@
-import {Swiper, SwiperSlide} from "swiper/react";
-import {AlbumCard} from "@/entities/Album";
-
-import {IAlbumList} from "@/entities/Album/model/types.ts";
 import {useDispatch} from "react-redux";
+import {Swiper, SwiperSlide} from "swiper/react";
+
+import {AlbumCard} from "@/entities/Album";
+import {IAlbumList} from "@/entities/Album/model/types.ts";
 import {setSelectedPlaylist} from "@/widgets/SelectPlaylist";
+
 
 export const AlbumList = ({albums}: {albums: IAlbumList[]}):JSX.Element => {
     const dispatch = useDispatch();
-
-
     return  (
         <Swiper className={'h-full'} slidesPerView={'auto'} spaceBetween={20}>
             {

@@ -1,1 +1,2 @@
-export type {IMusic, IMusicInfo} from "./model/types.ts"
+export type { Music } from "./model/types.ts";
+export { MusicList } from "./ui/MusicPlaylist/MusicList.tsx";

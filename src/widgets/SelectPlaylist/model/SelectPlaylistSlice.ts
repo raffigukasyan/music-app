@@ -1,4 +1,5 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+
 import {IAlbum} from "@/entities/Album/model/types.ts";
 
 const initialState = {
@@ -17,7 +18,7 @@ export const selectedPlaylistSlice = createSlice({
 })
 
 
-export const {setSelectedPlaylist}  = selectedPlaylistSlice.actions;
+export const {setSelectedPlaylist} = selectedPlaylistSlice.actions;
 
 export const selectedPlaylistReducer = selectedPlaylistSlice.reducer;
 

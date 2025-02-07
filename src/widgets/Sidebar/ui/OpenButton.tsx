@@ -1,4 +1,5 @@
 import {FC} from "react";
+
 import {motion, Variants} from "framer-motion";
 interface OpenButtonProps {
     className?: string;

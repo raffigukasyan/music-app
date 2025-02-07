@@ -1,7 +1,9 @@
-import {Icon} from "@/shared/ui/Icon.tsx";
-import {INavigationMenu} from "@/shared/consts/navMenu.ts";
 import {FC, useContext} from "react";
+
 import {motion} from "framer-motion";
+
+import {INavigationMenu} from "@/shared/consts/navMenu.ts";
+import {Icon} from "@/shared/ui/Icon.tsx";
 import {ISidebarContext, SidebarContext} from "@/widgets/Sidebar/ui/Sidebar.tsx";
 
 interface NavigationItemProps {
