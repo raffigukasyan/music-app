@@ -14,7 +14,6 @@ export const PlayMusic: FC<IItemTrackProps> = ({
   const dispatch = useDispatch();
 
   const handlePlay = () => {
-    console.log('DDDD');
     dispatch(
       setActiveMusic({
         ...track,

@@ -35,7 +35,6 @@ export const PlayerControl: FC<IPlayerControlProps> = ({
   const handleOnEnded = () => {
     dispatch(setIsPlaying(false));
   };
-  console.log("CONTROL REMDER");
   return (
     <div className={"flex items-center gap-x-6"}>
       <Icon

@@ -15,7 +15,6 @@ interface MusicListProps {
 export const MusicList: FC<MusicListProps> = ({ music }): JSX.Element => {
   //const activeMusic = useSelector(selectedMusic);
 
-  console.log( 'Music List')
   return (
     <div className="flex flex-col gap-y-3">
       {music.map((item: Music.IMusic) => (

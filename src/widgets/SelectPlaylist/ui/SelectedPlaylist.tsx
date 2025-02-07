@@ -25,7 +25,6 @@ interface ITracks {
 export const SelectedPlaylist: FC<ISelectedPlaylistProps> = (): JSX.Element => {
   const playlist = useSelector(selectedPlaylist);
 
-  console.log('render selected playlist');
   return (
     <>
       {Object.values(playlist).length ? (

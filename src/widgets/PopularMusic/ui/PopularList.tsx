@@ -3,6 +3,7 @@ import { FC } from "react";
 import { useSelector } from "react-redux";
 import { IMusic } from "src/entities/Music";
 
+import { selectPlayingMusic } from "@/entities/Player";
 import { IPopularListProps } from "@/widgets/PopularMusic/model/types.ts";
 import { PopularItem } from "@/widgets/PopularMusic/ui/PopularItem.tsx";
 import { SkeletonList } from "@/widgets/PopularMusic/ui/SkeletonList.tsx";
@@ -11,7 +12,7 @@ export const PopularList: FC<IPopularListProps> = ({
   chart,
   loading,
 }): JSX.Element => {
-  const activeMusic = useSelector((state) => state?.player?.activeMusic);
+  const activeMusic = useSelector(selectPlayingMusic);
 
   return loading ? (
     <SkeletonList />

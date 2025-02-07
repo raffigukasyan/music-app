@@ -13,7 +13,6 @@ export const Player = (): JSX.Element => {
   const activeMusic = useSelector(selectPlayingMusic);
   const playerRef = useRef<HTMLAudioElement>(null);
 
-  console.log("RENDER PLAYER");
   return (
     <BlockContainer
       className={

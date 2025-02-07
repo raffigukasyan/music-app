@@ -32,7 +32,6 @@ const playerReducer = createSlice({
       state.isPlaying = action.payload;
     },
     setActiveMusic: (state, action: PayloadAction<IPlayingMusic>) => {
-      console.log("change state");
       state.playingMusic = { ...action.payload };
     },
   },
