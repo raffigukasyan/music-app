@@ -6,6 +6,7 @@ interface IUsePlay {
   playAnimationRef: RefObject<number>;
   handlePausePlay: () => void;
   handleStartPlay: () => void;
+  dependencies: [];
 }
 export const usePlay = ({
   isPlaying,
@@ -13,6 +14,7 @@ export const usePlay = ({
   playAnimationRef,
   handleStartPlay,
   handlePausePlay,
+  dependencies,
 }: IUsePlay) => {
   useEffect(() => {
     if (isPlaying === null) return;
@@ -33,5 +35,5 @@ export const usePlay = ({
         cancelAnimationFrame(playAnimationRef.current);
       }
     };
-  }, [isPlaying]);
+  }, [isPlaying, ...dependencies]);
 };

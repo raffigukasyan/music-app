@@ -3,7 +3,10 @@ import { FC } from "react";
 import { useDispatch } from "react-redux";
 
 import { PreviewImage } from "@/entities/Music/ui/PreviewImage.tsx";
-import { setActiveMusic } from "@/entities/Player/model/PlayerSlice.ts";
+import {
+  setActiveMusic,
+  setIsPlaying,
+} from "@/entities/Player/model/PlayerSlice.ts";
 import { IItemTrackProps } from "@/widgets/PopularMusic/model/types.ts";
 
 export const PlayMusic: FC<IItemTrackProps> = ({
@@ -20,6 +23,7 @@ export const PlayMusic: FC<IItemTrackProps> = ({
         isPlay: isPlaying !== null ? !isPlaying : true,
       })
     );
+    dispatch(setIsPlaying(isPlaying !== null ? !isPlaying : true));
   };
 
   return (

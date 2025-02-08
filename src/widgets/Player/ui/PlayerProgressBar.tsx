@@ -59,8 +59,8 @@ export const PlayerProgressBar = ({
     playAnimationRef,
     handleStartPlay,
     handlePausePlay,
+    dependencies: [startAnimation, updateProgress],
   });
-
 
   const onChangePlay = (value: boolean) => {
     startAnimation();

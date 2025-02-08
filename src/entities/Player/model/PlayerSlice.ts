@@ -14,7 +14,7 @@ const initialState: IPlayer = {
     isPlay: false,
   },
   timeProgress: 0,
-  isPlaying: false,
+  isPlaying: null,
   duration: 0,
 };
 

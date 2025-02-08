@@ -19,13 +19,9 @@ export const PlayerControl: FC<IPlayerControlProps> = ({
   src,
 }): JSX.Element => {
   const isPlayingState = useSelector(selectisPlaying);
-  //const activeTrack = useSelector((state) => state.player.activeMusic);
   const dispatch = useDispatch();
 
-  //
-  //useEffect(() => {
-  //  dispatch(setIsPlaying(activeTrack.isPlay));
-  //}, [activeTrack]);
+
 
   const handleOnLoad = (): void => {
     const seconds: number = playerRef.current?.duration as number;
@@ -35,6 +31,8 @@ export const PlayerControl: FC<IPlayerControlProps> = ({
   const handleOnEnded = () => {
     dispatch(setIsPlaying(false));
   };
+
+  console.log('PLAYER CONTROL RENDER');
   return (
     <div className={"flex items-center gap-x-6"}>
       <Icon
