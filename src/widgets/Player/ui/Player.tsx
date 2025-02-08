@@ -10,7 +10,7 @@ import { PlayerControl } from "./PlayerControl";
 import { PlayerProgressBar } from "./PlayerProgressBar";
 
 export const Player = (): JSX.Element => {
-  const activeMusic = useSelector(selectPlayingMusic);
+  const playingMusic = useSelector(selectPlayingMusic);
   const playerRef = useRef<HTMLAudioElement>(null);
 
   return (
@@ -20,15 +20,15 @@ export const Player = (): JSX.Element => {
       }
     >
       <PlayerInfo
-        name={activeMusic.name}
-        artist={activeMusic.artist}
-        image={activeMusic.image}
+        name={playingMusic.name}
+        artist={playingMusic.artist}
+        image={playingMusic.image}
       />
       <div
         className={"flex-1 flex flex-col gap-y-3 items-center justify-center"}
       >
-        <PlayerControl playerRef={playerRef} src={activeMusic.audio} />
-        <PlayerProgressBar playerRef={playerRef} />
+        <PlayerControl playerRef={playerRef} src={playingMusic.audio} />
+        <PlayerProgressBar playerRef={playerRef} playingMusic={playingMusic} />
       </div>
     </BlockContainer>
   );

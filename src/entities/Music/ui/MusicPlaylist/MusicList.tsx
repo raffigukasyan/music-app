@@ -2,7 +2,7 @@ import { FC } from "react";
 
 import { useSelector } from "react-redux";
 
-import { selectedMusic } from "@/entities/Player";
+import { selectPlayingMusic } from "@/entities/Player";
 
 import { Music } from "../../model/types";
 
@@ -13,12 +13,18 @@ interface MusicListProps {
 }
 
 export const MusicList: FC<MusicListProps> = ({ music }): JSX.Element => {
-  //const activeMusic = useSelector(selectedMusic);
-
+  const playingMusic = useSelector(selectPlayingMusic);
   return (
     <div className="flex flex-col gap-y-3">
       {music.map((item: Music.IMusic) => (
-        <MusicItem key={item.id} music={item} />
+        <MusicItem
+          key={item.id}
+          music={item}
+          isActive={playingMusic.musicId === item.musicId}
+          isPlaying={
+            playingMusic.musicId === item.musicId && playingMusic.isPlay
+          }
+        />
       ))}
     </div>
   );

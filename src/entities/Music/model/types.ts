@@ -1,6 +1,7 @@
 export namespace Music {
   export interface IMusic {
     id: number;
+    musicId: number;
     name: string;
     artist: string;
     image: string;

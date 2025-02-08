@@ -1,4 +1,4 @@
-import { RefObject, useEffect, useRef } from "react";
+import { FC, RefObject, useRef } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 
@@ -11,17 +11,21 @@ import {
 import {
   selectDuration,
   selectisPlaying,
-  selectPlayingMusic,
   selectTimeProgress,
 } from "@/entities/Player/model/selectors";
+import { IPlayingMusic } from "@/entities/Player/model/types";
 import { useAnimation } from "@/features/ProgressBar";
 import { usePlay } from "@/features/ProgressBar/lib/hooks/usePlay";
-export const PlayerProgressBar = ({
-  playerRef,
-}: {
+
+interface IPlayerProgressBar {
   playerRef: RefObject<HTMLAudioElement>;
+  playingMusic: IPlayingMusic;
+}
+
+export const PlayerProgressBar: FC<IPlayerProgressBar> = ({
+  playerRef,
+  playingMusic,
 }): JSX.Element => {
-  const activeMusic = useSelector(selectPlayingMusic);
   const duration = useSelector(selectDuration);
   const timeProgress = useSelector(selectTimeProgress);
   const isPlaying = useSelector(selectisPlaying);
@@ -45,12 +49,12 @@ export const PlayerProgressBar = ({
 
   const handleStartPlay = () => {
     startAnimation();
-    dispatch(setActiveMusic({ ...activeMusic, isPlay: true }));
+    dispatch(setActiveMusic({ ...playingMusic, isPlay: true }));
   };
 
   const handlePausePlay = () => {
     updateProgress();
-    dispatch(setActiveMusic({ ...activeMusic, isPlay: false }));
+    dispatch(setActiveMusic({ ...playingMusic, isPlay: false }));
   };
 
   usePlay({

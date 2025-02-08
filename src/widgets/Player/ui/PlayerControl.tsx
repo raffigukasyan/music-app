@@ -32,7 +32,7 @@ export const PlayerControl: FC<IPlayerControlProps> = ({
     dispatch(setIsPlaying(false));
   };
 
-  console.log('PLAYER CONTROL RENDER');
+ 
   return (
     <div className={"flex items-center gap-x-6"}>
       <Icon

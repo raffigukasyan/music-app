@@ -1,4 +1,6 @@
-import {ITrack} from "@/entities/Music";
+import { Music } from '@/entities/Music';
+
+
 
 export interface IAlbum {
     id: number,
@@ -7,7 +9,7 @@ export interface IAlbum {
     artist: string,
     image: string,
     duration: string,
-    tracks: ITrack[],
+    tracks: Music.IMusic[],
 }
 
 export interface IAlbumList extends Omit<IAlbum, "tracks | duration | description">
