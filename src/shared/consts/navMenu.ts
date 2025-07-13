@@ -25,16 +25,16 @@ export const NAVIGATION_MENU: INavigationMenu[] = [
     title: "Артисты",
     icon: "sparkles",
   },
-  {
-    link: "library",
-    title: "Библотека",
-    icon: "library",
-  },
-  {
-    link: "radio",
-    title: "Радио",
-    icon: "radio",
-  },
+  // {
+  //   link: "library",
+  //   title: "Библотека",
+  //   icon: "library",
+  // },
+  // {
+  //   link: "radio",
+  //   title: "Радио",
+  //   icon: "radio",
+  // },
 ];
 
 export const AUTH_NAVIGATION_MENU: INavigationMenu[] = [
@@ -47,10 +47,5 @@ export const AUTH_NAVIGATION_MENU: INavigationMenu[] = [
     link: "favorite",
     title: "Мне нравится",
     icon: "favorite",
-  },
-  {
-    link: "podcast",
-    title: "Подкасты",
-    icon: "podcast",
   },
 ];

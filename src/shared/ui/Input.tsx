@@ -1,12 +1,24 @@
-interface IInputProps  {
-    value?: string,
-    className?: string,
-    placeholder: string
-    onChange?: React.ChangeEventHandler<HTMLInputElement>,
+import clsx from 'clsx';
+
+interface IInputProps {
+  className?: string;
+  placeholder: string;
 }
 
-export const Input = ({value, placeholder,  className, onChange}:IInputProps):JSX.Element => {
-    return (
-        <input type={'text'} placeholder={placeholder} className={`border-none bg-transparent placeholder:border-none focus:outline-0 text-lg text-gray-300  ${className}`} value={value ?? ''} onChange={onChange} />
-    )
-}
+export const Input = ({
+  placeholder,
+  className,
+  ...props
+}: IInputProps): JSX.Element => {
+  return (
+    <input
+      type={'text'}
+      placeholder={placeholder}
+      className={clsx(
+        'bg-transparent placeholder:border-none focus:outline-0 text-lg text-gray-300',
+        className
+      )}
+      {...props}
+    />
+  );
+};
