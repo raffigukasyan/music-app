@@ -1,24 +1,24 @@
+import React, { forwardRef } from 'react';
 import clsx from 'clsx';
 
-interface IInputProps {
+interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string;
-  placeholder: string;
 }
 
-export const Input = ({
-  placeholder,
-  className,
-  ...props
-}: IInputProps): JSX.Element => {
-  return (
-    <input
-      type={'text'}
-      placeholder={placeholder}
-      className={clsx(
-        'bg-transparent placeholder:border-none focus:outline-0 text-lg text-gray-300',
-        className
-      )}
-      {...props}
-    />
-  );
-};
+export const Input = forwardRef<HTMLInputElement, IInputProps>(
+  ({ className, ...props }, ref) => {
+    return (
+      <input
+        ref={ref}
+        type='text'
+        className={clsx(
+          'bg-transparent placeholder:border-none focus:outline-0 text-lg text-gray-300',
+          className
+        )}
+        {...props}
+      />
+    );
+  }
+);
+
+Input.displayName = 'Input';

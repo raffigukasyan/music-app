@@ -4,13 +4,17 @@ import clsx from 'clsx';
 
 interface IButtonProps {
   children: ReactNode;
-  className: string;
+  className?: string;
 }
 
-export const Button = ({ children, className }: IButtonProps) => {
+export const Button = ({ children, className, ...props }: IButtonProps) => {
   return (
     <button
-      className={clsx(className, 'text-md text-center w-full border-none rounded-md py-2.5')}
+      className={clsx(
+        className,
+        'text-md text-center w-full border-none rounded-md py-2.5'
+      )}
+      {...props}
     >
       {children}
     </button>
