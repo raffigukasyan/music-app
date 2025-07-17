@@ -1,14 +1,15 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { fetchSignUp } from '../../api/requests';
 
-export const onSignUpSumbit = createAsyncThunk(
+export const onSignUpThunk = createAsyncThunk(
   'auth/signUpSumbit',
-  (payload, { rejectWithValue }) => {
+  async (payload, { rejectWithValue }) => {
     try {
-      const reponse = await fetchSignUp(payload.data)
-    }
-    catch(e) {
-      console.log(e);
+      const response = await fetchSignUp(payload);
+      return response.data;
+    } catch (e) {
+      console.log(e, 'Error');
+      return rejectWithValue(e.response?.data?.message || 'Register failed');
     }
   }
 );
