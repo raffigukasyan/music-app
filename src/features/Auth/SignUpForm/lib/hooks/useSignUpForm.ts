@@ -1,7 +1,8 @@
-import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+
 import { signUpSchema } from '../../consts/signUpSchema';
-import { fetchRegister } from '../../api/requests/postSignUp';
+
 interface SignUpForm {
   username: string;
   email: string;
@@ -20,8 +21,8 @@ export const useSignUpForm = () => {
   });
 
   const onSubmit = signUpForm.handleSubmit(async (data) => {
-    const resp = await fetchRegister(data);
-    console.log(resp);
+    //const resp = await fetchRegister(data);
+    //console.log(resp);
   });
 
   return { form: signUpForm, functions: { onSubmit } };
